@@ -1,0 +1,3 @@
+EMAIL ADDRESS,FIRST NAME,LAST NAME,HIDDEN FROM ADDRESS LIST
+bob@test.com,Bob,Smith,FALSE
+nosee@test.com,Sally,West,TRUE
