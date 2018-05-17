@@ -16,9 +16,10 @@ defmodule CSVConvert do
     :world
   end
   
-  def start(_type, _args) do
+  def convert do
+  #     :timer.sleep(1000)
     file_name = "ExportData.csv"
-    IO.puts file_name
+    IO.puts "Filename: " <> file_name
     file_data = file_name
     |> get_raw_data
     |> Enum.reject(&filter_hidden/1)
@@ -32,13 +33,13 @@ defmodule CSVConvert do
     # |> Enum.map(&convert_body/1)
     # |> Enum.map(&send_email/1)
 
-    Supervisor.start_link [], strategy: :one_for_one
   end
 
   defp get_raw_data(file_name) do
+    # IO.puts "get_raw_data: " <> file_name
     file_name
     |> File.open!([:utf8])
-    # |> IO.inspect
+    # |> IO.inspect(label: "file open")
     |> IO.stream(:line)
     |> CSV.decode(headers: true)
     # |> IO.inspect
